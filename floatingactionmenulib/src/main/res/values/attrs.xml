@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="MenuLayout">
+
+        <!--  The rotation direction of the floating button animation-->
+        <attr name="fab_rotation_direction" format="integer">
+            <!--  clockwise-->
+            <enum name="cw" value="1"/>
+            <!-- counterclockwise -->
+            <enum name="ncw" value="2"/>
+
+        </attr>
+
+        <!-- The distance between the floating button and the bottom right -->
+        <attr name="fab_Size" format="dimension"/>
+        <attr name="fab_margin_right" format="dimension"/>
+        <attr name="fab_margin_buttom" format="dimension"/>
+
+        <!--  The size of the floating button that pops up-->
+        <attr name="popup_fab_size" format="dimension"/>
+
+        <!--  Custom Drawable Show-->
+        <attr name="show_custom_size_popup" format="boolean"/>
+
+        <!--   The spacing between each floating button or picture that pops up-->
+        <attr name="popup_fab_margin" format="dimension"/>
+        <!-- Whether to display text-->
+        <attr name="show_text" format="boolean"/>
+        <!-- Whether to display text background-->
+        <attr name="show_text_bg" format="boolean"/>
+        <!-- The text size of the displayed text -->
+        <attr name="textSize" format="dimension"/>
+        <!-- display text color -->
+        <attr name="textColor" format="color"/>
+        <!-- Show text background color -->
+        <attr name="text_bg_color" format="color"/>
+
+        <attr name="fab_img_tint_color" format="color"/>
+
+        <!-- Whether to display the image background-->
+        <attr name="show_image_bg" format="boolean"/>
+
+        <!-- Image background color-->
+        <attr name="image_bg_color" format="color"/>
+
+        <!-- gap between text and image -->
+        <attr name="text_image_maragin" format="dimension"/>
+
+    </declare-styleable>
+</resources>

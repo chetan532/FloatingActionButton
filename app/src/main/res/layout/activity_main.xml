@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/dddddd"/>
+
+    <com.cvaghela.customfloatingview.floatingview.fabmenu.floatingactionmenulib.MenuLayout
+        android:id="@+id/menuLayout"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent"
+        android:backgroundTint="@color/transparent"
+        app:fab_margin_buttom="20dp"
+        app:fab_margin_right="20dp"
+        app:show_text="false"
+        app:fab_Size="56dp"
+        app:popup_fab_margin="5dp"
+        app:show_custom_size_popup="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.cvaghela.customfloatingview.floatingview.fabmenu.floatingactionmenulib.MenuLayout
+        android:id="@+id/menuLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent"
+        android:backgroundTint="@color/transparent"
+        app:fab_margin_buttom="300dp"
+        app:fab_margin_right="20dp"
+        app:show_text="false"
+        app:fab_Size="56dp"
+        app:fab_img_tint_color="@color/black"
+        app:popup_fab_margin="15dp"
+        app:show_custom_size_popup="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <com.cvaghela.customfloatingview.floatingview.fabmenu.floatingactionmenulib.MenuLayout
+        android:id="@+id/menuLayout2"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/transparent"
+        android:backgroundTint="@color/transparent"
+        app:fab_margin_buttom="20dp"
+        app:fab_margin_right="200dp"
+        app:show_text="true"
+        app:fab_Size="56dp"
+        app:fab_img_tint_color="@color/black"
+        app:popup_fab_margin="15dp"
+        app:show_custom_size_popup="false"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
