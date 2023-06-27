@@ -1,16 +1,22 @@
 # FloatingActionButton
 Floating Action Button is for Creating custom expandable floating action view in Android 
 
+The Floating Action Button library for Android provides a flexible and customizable implementation of the popular Floating Action Button component. With this library, developers can easily integrate a sleek and intuitive Floating Action Button into their Android applications, adhering to the Material Design guidelines. The library offers a range of customization options, allowing you to tailor the appearance, behavior, and animations of the Floating Action Button to match your app's unique style. Additionally, it provides support for floating menus and action bars, enabling the creation of delightful user interfaces with enhanced user interactions. Experience the power of this versatile library and effortlessly elevate your app's design with the Floating Action Button component.
+
+Keywords: 
+
+1. Floating Action Button
+2. FAB
+3. Floating Menu
+4. Floating Action Bar
+
 ## Usage
 
 Add the dependency to your build.gradle.
 ```xml
 
-allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
+dependencies {
+	        implementation 'com.github.chetan532:FloatingActionButton:1.0.0'
 	}
 
 ```
