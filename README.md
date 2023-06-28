@@ -18,7 +18,7 @@ Add the dependency to your build.gradle.
 ```xml
 
 dependencies {
-	        implementation 'com.github.chetan532:FloatingActionButton:1.0.0'
+	        implementation 'com.github.chetan532:FloatingActionButton:1.0.1'
 	}
 
 ```
