@@ -22,6 +22,7 @@ import android.widget.TextView;
 
 import androidx.annotation.ColorRes;
 import androidx.annotation.DrawableRes;
+import androidx.annotation.Px;
 import androidx.cardview.widget.CardView;
 import androidx.core.view.ViewCompat;
 
@@ -46,9 +47,10 @@ public class MenuLayout extends RelativeLayout {
     private boolean mShowText;
     private boolean mShowCustomSizePopup;
     private boolean mShowTextbg;
-    private int mTextSize;
+    private @Px int mTextSize;
     private int mTextColor;
     private int mTextBgColor;
+    private int mOpenMenuIconColor;
     private int mMainFabBgColor;
     private boolean mShowImageBg;
     private int mImageBgColor;
@@ -63,10 +65,9 @@ public class MenuLayout extends RelativeLayout {
     private boolean isStart = false;
 
     private static final int mElevation = 6;
-    private static final int mTextBgRadius = 3;
-    private static final int mTextPadding = 4;
-
-
+    private static final int mTextBgRadius = 8;
+    private static final int mTextPadding = 10;
+    private int mainIconColor;
     private OnItemClickListener onItemClickListener;
 
 
@@ -92,11 +93,12 @@ public class MenuLayout extends RelativeLayout {
         mShowTextbg = true;
         mShowCustomSizePopup = false;
         mTextColor = Color.BLACK;
-        mTextSize = Utils.sp2px(mContext, 14);
+        mTextSize = Utils.px2sp(mContext, 10);
         mTextBgColor = Color.WHITE;
         mMainFabBgColor = Color.WHITE;
         mShowImageBg = true;
         mImageBgColor = Color.WHITE;
+        mOpenMenuIconColor = Color.WHITE;
         mFabSize = Utils.dip2px(mContext, 56);
         mPopupImageSize = Utils.dip2px(mContext, 40);
         mPopupImageMargin = Utils.dip2px(mContext, 20);
@@ -114,6 +116,7 @@ public class MenuLayout extends RelativeLayout {
             mTextSize = typedArray.getDimensionPixelSize(R.styleable.MenuLayout_textSize, mTextSize);
             mTextBgColor = typedArray.getColor(R.styleable.MenuLayout_text_bg_color, mTextBgColor);
             mMainFabBgColor = typedArray.getColor(R.styleable.MenuLayout_fab_img_tint_color, mMainFabBgColor);
+            mOpenMenuIconColor = typedArray.getColor(R.styleable.MenuLayout_open_menu_icon_color, mOpenMenuIconColor);
             mShowImageBg = typedArray.getBoolean(R.styleable.MenuLayout_show_image_bg, mShowImageBg);
             mImageBgColor = typedArray.getColor(R.styleable.MenuLayout_image_bg_color, mImageBgColor);
             mFabSize = typedArray.getDimensionPixelSize(R.styleable.MenuLayout_fab_Size, mFabSize);
@@ -135,7 +138,6 @@ public class MenuLayout extends RelativeLayout {
         mMainButton.setId(R.id.menuLayout_fab_view);
         mMainButton.setCompatElevation(Utils.dip2px(mContext, mElevation));
         mMainButton.setImageTintList(ColorStateList.valueOf(mMainFabBgColor));
-        //一个MINI(40dp) 一个NORMAL(56dp)
         mMainButton.setCustomSize(mFabSize);
         mMainButton.setScaleType(ImageView.ScaleType.CENTER);
         mMainButton.setOnClickListener(new OnClickListener() {
@@ -301,10 +303,7 @@ public class MenuLayout extends RelativeLayout {
         ViewCompat.setBackgroundTintList(floatingActionButton, ColorStateList.valueOf(mbgColor));
         floatingActionButton.setImageResource(resId);
 
-        //这个CustomSize要在版本design:27才有，低版本只能通过setSize设置有两种
-        //一个MINI(40dp) 一个NORMAL(56dp)
         floatingActionButton.setCustomSize(mPopupImageSize);
-        //  floatingActionButton.setSize(FloatingActionButton.SIZE_MINI);
         floatingActionButton.setScaleType(ImageView.ScaleType.CENTER);
         floatingActionButton.setCompatElevation(Utils.dip2px(mContext, mElevation));
         floatingActionButton.setOnClickListener(new OnClickListener() {
@@ -322,7 +321,7 @@ public class MenuLayout extends RelativeLayout {
     private TextView createTextView(final int position, final String text) {
         TextView textView = new TextView(mContext);
         textView.setTextColor(mTextColor);
-        textView.setGravity(Gravity.RIGHT);
+        textView.setGravity(Gravity.CENTER);
         textView.setTextSize(Utils.px2sp(mContext, mTextSize));
         textView.setText(text);
         textView.setOnClickListener(new OnClickListener() {
@@ -384,7 +383,9 @@ public class MenuLayout extends RelativeLayout {
 
     public MenuLayout setMainButtonColorAndIcon(@ColorRes int resColorId, @DrawableRes int resImageId) {
         if (mMainButton != null) {
-            ViewCompat.setBackgroundTintList(mMainButton, ColorStateList.valueOf(getResources().getColor(resColorId)));
+
+            mainIconColor = resColorId;
+            ViewCompat.setBackgroundTintList(mMainButton, ColorStateList.valueOf(getResources().getColor(mainIconColor)));
             mMainButton.setImageResource(resImageId);
         }
         return this;
@@ -429,6 +430,7 @@ public class MenuLayout extends RelativeLayout {
             @Override
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
+                ViewCompat.setBackgroundTintList(mMainButton, ColorStateList.valueOf(mOpenMenuIconColor));
                 isStart = true;
 
             }
@@ -467,6 +469,8 @@ public class MenuLayout extends RelativeLayout {
             public void onAnimationEnd(Animator animation) {
                 super.onAnimationEnd(animation);
                 isStart = false;
+                ViewCompat.setBackgroundTintList(mMainButton, ColorStateList.valueOf(getResources().getColor(mainIconColor)));
+
                 if (menuLayout != null) {
                     menuLayout.setVisibility(INVISIBLE);
                 }
